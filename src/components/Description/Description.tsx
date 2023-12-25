@@ -7,8 +7,7 @@ import {
   StyledNumber,
   Title,
   TitleWrapper,
-} from './Description.styled';
-
+} from 'components/Description/Description.styled';
 
 const Description = () => {
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +20,7 @@ const Description = () => {
     <>
       <Title>Get your car now!</Title>
       <ul>
-        <ListItem className={loaded? 'loaded': undefined}>
+        <ListItem className={loaded ? 'loaded' : undefined}>
           <TitleWrapper>
             <StyledNumber>1.</StyledNumber>
             <StyledLabel>Dream Car</StyledLabel>
@@ -31,7 +30,7 @@ const Description = () => {
             that suits their taste and wallet
           </Info>
         </ListItem>
-        <ListItem className={loaded? 'loaded': undefined}>
+        <ListItem className={loaded ? 'loaded' : undefined}>
           <TitleWrapper>
             <StyledNumber>2.</StyledNumber>
             <StyledLabel>Processing Speed</StyledLabel>
@@ -41,7 +40,7 @@ const Description = () => {
             so that after 30 minutes you can enjoy a trip in a comfortable car
           </Info>
         </ListItem>
-        <ListItem className={loaded? 'loaded': undefined}>
+        <ListItem className={loaded ? 'loaded' : undefined}>
           <TitleWrapper>
             <StyledNumber>3.</StyledNumber>
             <StyledLabel>Safety</StyledLabel>

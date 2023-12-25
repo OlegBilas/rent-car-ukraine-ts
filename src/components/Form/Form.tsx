@@ -23,7 +23,7 @@ import { ReactComponent as ClosedSvg } from 'images/Form/closed.svg';
 import { selectCars, selectMakes } from 'redux/cars/selectors';
 import { getPriceRanges } from 'utils';
 import * as Yup from 'yup';
-import { IQuery } from 'types/types.typed';
+import { IQuery } from 'types/types';
 import { useAppSelector } from 'hooks';
 import { NumberFormatValues } from 'react-number-format';
 

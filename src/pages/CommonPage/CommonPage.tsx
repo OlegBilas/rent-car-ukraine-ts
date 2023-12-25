@@ -8,7 +8,7 @@ import { FormSearch } from 'components/Form/Form';
 import { getCars } from 'utils';
 import { LoadMoreBtn } from './CommonPage.styled';
 import { Helmet } from 'react-helmet-async';
-import { Car, IQuery } from 'types/types.typed';
+import { Car, IQuery } from 'types/types';
 
 interface IProps {
   allCars: Car[];

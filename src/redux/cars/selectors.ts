@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'redux/store';
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 
 export const selectIsLoading = (state: RootState) => state.cars.isLoading;
 export const selectError = (state: RootState) => state.cars.error;

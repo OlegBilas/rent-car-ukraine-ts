@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchCars, fetchMakes } from 'redux/cars/operations';
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 
 interface IState {
   items: Car[];

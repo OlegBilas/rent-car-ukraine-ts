@@ -15,7 +15,7 @@ import {
 } from './CarModal.styled';
 import { getFirstLineModal, getSecondLineModal } from 'utils';
 import { NumericFormat } from 'react-number-format';
-import { Car, ToggleModal } from 'types/types.typed';
+import { Car, ToggleModal } from 'types/types';
 
 interface IProps {
   car: Car;

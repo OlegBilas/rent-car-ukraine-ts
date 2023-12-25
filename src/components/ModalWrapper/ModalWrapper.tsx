@@ -1,6 +1,6 @@
 import { CarModal } from 'components/CarModal/CarModal';
 import { Modal } from 'components/Modal/Modal';
-import { Car, ToggleModal } from 'types/types.typed';
+import { Car, ToggleModal } from 'types/types';
 
 interface IProps {
   car: Car;

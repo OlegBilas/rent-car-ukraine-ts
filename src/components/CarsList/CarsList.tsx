@@ -13,7 +13,7 @@ import { Line } from 'components/Line/Line';
 import { setFavorite } from 'redux/cars/carsSlice';
 import { ModalWrapper } from 'components/ModalWrapper/ModalWrapper';
 import { useTheme } from 'styled-components';
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 import { useAppDispatch } from 'hooks';
 
 interface IProps {

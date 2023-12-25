@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/rent-car-ukraine-ts">
+        <BrowserRouter basename="/">
           <HelmetProvider>
             <App />
           </HelmetProvider>

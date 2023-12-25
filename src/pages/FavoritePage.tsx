@@ -1,5 +1,5 @@
 import { selectFavoriteCars } from 'redux/cars/selectors';
-import CommonPage from './CommonPage/CommonPage';
+import CommonPage from 'pages/CommonPage/CommonPage';
 import { useAppSelector } from 'hooks';
 
 const FavoritePage = () => {

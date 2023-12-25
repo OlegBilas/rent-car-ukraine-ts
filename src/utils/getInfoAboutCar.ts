@@ -1,4 +1,4 @@
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 
 export const getCarLocation = (address: string) => {
   const array = address.split(',');

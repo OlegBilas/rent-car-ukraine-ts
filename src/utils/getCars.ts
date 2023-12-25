@@ -1,5 +1,5 @@
-import { IQuery } from 'types/types.typed';
-import { Car } from 'types/types.typed';
+import { IQuery } from 'types/types';
+import { Car } from 'types/types';
 
 type Result = {
   overallLength: number;

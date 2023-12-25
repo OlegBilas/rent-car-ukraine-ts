@@ -1,17 +1,16 @@
-
 import { Suspense, lazy, useEffect } from 'react';
-import Loader from './Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { selectIsLoading } from 'redux/cars/selectors';
 
-import { Layout } from './Layout/Layout';
+import { Layout } from 'components/Layout/Layout';
 import { fetchCars, fetchMakes } from 'redux/cars/operations';
 import { ThemeProvider } from 'styled-components';
 import useWindowSize, { useAppSelector } from 'hooks';
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from 'components/GlobalStyle';
 import { useAppDispatch } from 'hooks';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));

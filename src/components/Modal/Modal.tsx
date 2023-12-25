@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay } from './Modal.styled';
-import { ToggleModal } from 'types/types.typed';
+import { ToggleModal } from 'types/types';
 
 const modalRoot = document.querySelector('#modal-root') as HTMLDivElement;
 

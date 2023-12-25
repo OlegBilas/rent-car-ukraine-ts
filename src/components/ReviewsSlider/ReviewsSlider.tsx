@@ -17,7 +17,7 @@ import {
 } from './ReviewsSlider.styled';
 
 import { selectCars } from 'redux/cars/selectors';
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 import { useAppSelector } from 'hooks';
 
 const ReviewsSlider = () => {

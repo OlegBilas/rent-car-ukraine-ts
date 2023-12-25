@@ -1,4 +1,4 @@
-import { Car } from 'types/types.typed';
+import { Car } from 'types/types';
 import { Model, Price, Title, TitleWrapper } from './CarTitle.styled';
 
 interface IProps {
