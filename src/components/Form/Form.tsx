@@ -25,6 +25,7 @@ import { getPriceRanges } from 'utils';
 import * as Yup from 'yup';
 import { IQuery } from 'types/types.typed';
 import { useAppSelector } from 'hooks';
+import { NumberFormatValues } from 'react-number-format';
 
 const initialValues: IQuery = {
   make: '',
@@ -58,7 +59,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
 
   type SetFieldValue = (
     field: string,
-    value: any,
+    value: string | number,
     shouldValidate?: boolean | undefined
   ) => Promise<void | FormikErrors<IQuery>>;
 
@@ -135,8 +136,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
                     onClick={togglePriceMenu}
                     value={values.rentalPrice}
                     onValueChange={
-                      (val: { floatValue: (val: string) => number }) =>
-                        setFieldValue('rentalPrice', val.floatValue) // floatValue - NumericFormat method to get number
+                      val => setFieldValue('rentalPrice', val.floatValue) // floatValue - NumericFormat method to get number
                     }
                     prefix="To "
                     suffix="$"
@@ -169,7 +169,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
                   <FieldFrom
                     value={values.mileageFrom}
                     onValueChange={
-                      (val: { floatValue: (val: string) => number }) =>
+                      (val: NumberFormatValues) =>
                         setFieldValue('mileageFrom', val.floatValue) // floatValue - NumericFormat method to get number from string
                     }
                   />
@@ -180,7 +180,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
                   <FieldTo
                     value={values.mileageTo}
                     onValueChange={
-                      (val: { floatValue: (val: string) => number }) =>
+                      (val: NumberFormatValues) =>
                         setFieldValue('mileageTo', val.floatValue) // floatValue - NumericFormat method to get number from string
                     }
                   />

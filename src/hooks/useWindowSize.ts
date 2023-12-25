@@ -1,6 +1,8 @@
 /* eslint-disable no-inner-declarations */
 import { useState, useEffect } from 'react';
 
+type Callback = () => void;
+
 // hook to get window size dynamically
 const useWindowSize = () => {
   // Initialize state with undefined width/height so server and client renders match
@@ -10,7 +12,7 @@ const useWindowSize = () => {
     height: 0,
   });
 
-  useEffect((): any => {
+  useEffect((): void | Callback => {
     // only execute all the code below in client side
     if (typeof window !== 'undefined') {
       // Handler to call on window resize

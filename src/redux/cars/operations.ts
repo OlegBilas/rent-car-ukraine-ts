@@ -9,8 +9,10 @@ export const fetchCars = createAsyncThunk(
     try {
       const response = await axios.get('/adverts');
       return response.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );
@@ -21,8 +23,10 @@ export const fetchMakes = createAsyncThunk(
     try {
       const response = await axios.get('/makes');
       return response.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
   }
 );
