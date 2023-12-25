@@ -15,11 +15,11 @@ import {
 } from './CarModal.styled';
 import { getFirstLineModal, getSecondLineModal } from 'utils';
 import { NumericFormat } from 'react-number-format';
-import { Car } from 'types/types.typed';
+import { Car, ToggleModal } from 'types/types.typed';
 
 interface IProps {
   car: Car;
-  toggleModal: (car: Car) => void;
+  toggleModal: ToggleModal;
 }
 
 export const CarModal = ({ car, toggleModal }: IProps) => {
@@ -58,7 +58,6 @@ export const CarModal = ({ car, toggleModal }: IProps) => {
       <CloseBtn type="button" onClick={() => toggleModal()}>
         <Close width={24} height={24} />
       </CloseBtn>
-
       <Img
         src={car.img}
         alt={`${car.make} ${car.model}, ${car.year}`}

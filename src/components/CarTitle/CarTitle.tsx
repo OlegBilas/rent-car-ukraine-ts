@@ -1,7 +1,11 @@
-import React from 'react';
+import { Car } from 'types/types.typed';
 import { Model, Price, Title, TitleWrapper } from './CarTitle.styled';
 
-export const CarTitle = ({ car }) => {
+interface IProps {
+  car: Car;
+}
+
+export const CarTitle = ({ car }: IProps) => {
   return (
     <TitleWrapper>
       <Title>

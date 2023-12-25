@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Formik, ErrorMessage } from 'formik';
+import { useEffect, useState } from 'react';
+import { Formik, ErrorMessage, FormikErrors } from 'formik';
 import {
   Form,
   SearchBtn,
@@ -20,22 +20,27 @@ import {
 import { ReactComponent as OpenedSvg } from 'images/Form/opened.svg';
 import { ReactComponent as ClosedSvg } from 'images/Form/closed.svg';
 
-import { useSelector } from 'react-redux';
 import { selectCars, selectMakes } from 'redux/cars/selectors';
 import { getPriceRanges } from 'utils';
 import * as Yup from 'yup';
+import { IQuery } from 'types/types.typed';
+import { useAppSelector } from 'hooks';
 
-const initialValues = {
+const initialValues: IQuery = {
   make: '',
   rentalPrice: '',
-  mileageFrom: '',
-  mileageTo: '',
+  mileageFrom: 0,
+  mileageTo: 0,
 };
 
-export const FormSearch = ({ setQuery }) => {
-  const makes = useSelector(selectMakes);
-  const cars = useSelector(selectCars);
-  const [prices, setPrices] = useState([]);
+interface IProps {
+  setQuery: (val: IQuery) => void;
+}
+
+export const FormSearch = ({ setQuery }: IProps) => {
+  const makes = useAppSelector(selectMakes);
+  const cars = useAppSelector(selectCars);
+  const [prices, setPrices] = useState<number[]>([]);
   const [openedMake, setOpenedMake] = useState(false);
   const [openedPrice, setOpenedPrice] = useState(false);
 
@@ -51,7 +56,17 @@ export const FormSearch = ({ setQuery }) => {
     setOpenedPrice(prevState => !prevState);
   };
 
-  const getOptions = (items, setFieldValue, nameInput) =>
+  type SetFieldValue = (
+    field: string,
+    value: any,
+    shouldValidate?: boolean | undefined
+  ) => Promise<void | FormikErrors<IQuery>>;
+
+  const getOptions = (
+    items: string[] | number[],
+    setFieldValue: SetFieldValue,
+    nameInput: string
+  ) =>
     items.map(item => (
       <li
         key={item}
@@ -67,18 +82,16 @@ export const FormSearch = ({ setQuery }) => {
     <Formik
       initialValues={initialValues}
       validationSchema={Yup.object().shape({
-        make: Yup.string().oneOf(makes, 'Invalid make of car'),
-        rentalPrice: Yup.number().oneOf(prices, 'Invalid rental price of car'),
-        mileageFrom: Yup.number().lessThan(
-          Yup.ref('mileageTo') > 0
-            ? Yup.ref('mileageTo')
-            : Number.MAX_SAFE_INTEGER,
-          'From should be < To'
-        ),
-        mileageTo: Yup.number().moreThan(
-          Yup.ref('mileageFrom') > 0 ? Yup.ref('mileageFrom') : 0,
-          'To should be > From'
-        ),
+        make: Yup.string().oneOf(makes, 'Invalid make of car').defined(),
+        rentalPrice: Yup.number()
+          .oneOf(prices, 'Invalid rental price of car')
+          .defined(),
+        mileageFrom: Yup.number()
+          .lessThan(Yup.ref('mileageTo'), 'From should be < To')
+          .defined(),
+        mileageTo: Yup.number()
+          .moreThan(Yup.ref('mileageFrom'), 'To should be > From')
+          .defined(),
       })}
       onSubmit={values => {
         setQuery(values);
@@ -122,7 +135,8 @@ export const FormSearch = ({ setQuery }) => {
                     onClick={togglePriceMenu}
                     value={values.rentalPrice}
                     onValueChange={
-                      val => setFieldValue('rentalPrice', val.floatValue) // floatValue - NumericFormat method to get number
+                      (val: { floatValue: (val: string) => number }) =>
+                        setFieldValue('rentalPrice', val.floatValue) // floatValue - NumericFormat method to get number
                     }
                     prefix="To "
                     suffix="$"
@@ -155,7 +169,8 @@ export const FormSearch = ({ setQuery }) => {
                   <FieldFrom
                     value={values.mileageFrom}
                     onValueChange={
-                      val => setFieldValue('mileageFrom', val.floatValue) // floatValue - NumericFormat method to get number from string
+                      (val: { floatValue: (val: string) => number }) =>
+                        setFieldValue('mileageFrom', val.floatValue) // floatValue - NumericFormat method to get number from string
                     }
                   />
                   <ErrorMessage name="mileageFrom" />
@@ -165,7 +180,8 @@ export const FormSearch = ({ setQuery }) => {
                   <FieldTo
                     value={values.mileageTo}
                     onValueChange={
-                      val => setFieldValue('mileageTo', val.floatValue) // floatValue - NumericFormat method to get number from string
+                      (val: { floatValue: (val: string) => number }) =>
+                        setFieldValue('mileageTo', val.floatValue) // floatValue - NumericFormat method to get number from string
                     }
                   />
 
@@ -180,7 +196,7 @@ export const FormSearch = ({ setQuery }) => {
               <SearchBtn
                 className="accent-button"
                 type="reset"
-                onClick={values => {
+                onClick={() => {
                   setQuery(values);
                   setOpenedMake(false);
                   setOpenedPrice(false);

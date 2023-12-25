@@ -1,4 +1,3 @@
-import React from 'react';
 import { HeaderComp, Nav, NavLink } from './Header.styled';
 
 const Header = () => {

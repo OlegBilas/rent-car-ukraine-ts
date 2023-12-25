@@ -80,7 +80,7 @@ function handleFulfilled(state: IState) {
   state.error = null;
 }
 
-function handleRejected(state: IState, action: any) {
+function handleRejected(state: IState, action: PayloadAction<any>) {
   state.isLoading = false;
   state.error = action.payload;
 }

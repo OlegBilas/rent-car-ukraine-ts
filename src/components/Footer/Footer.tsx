@@ -1,4 +1,3 @@
-import React from 'react';
 import { FooterWrapper, GithubIcon, GithubLink } from './Footer.styled';
 
 const Footer = () => {

@@ -1,8 +1,13 @@
 import { CarModal } from 'components/CarModal/CarModal';
 import { Modal } from 'components/Modal/Modal';
-import React from 'react';
+import { Car, ToggleModal } from 'types/types.typed';
 
-export const ModalWrapper = ({ car, toggleModal }) => {
+interface IProps {
+  car: Car;
+  toggleModal: ToggleModal;
+}
+
+export const ModalWrapper = ({ car, toggleModal }: IProps) => {
   return (
     <Modal toggleModal={toggleModal}>
       <CarModal car={car} toggleModal={toggleModal} />

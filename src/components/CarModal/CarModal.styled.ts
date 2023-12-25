@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CarTitle as CarTitleStyled } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
-import  CloseStyled from 'images/CarModal/x.svg';
+import { ReactComponent as CloseStyled } from 'images/CarModal/x.svg';
 import { calcWidth } from 'utils';
 import { SCREENS } from 'components/GlobalStyle';
 

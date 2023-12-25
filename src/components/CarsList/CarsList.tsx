@@ -10,29 +10,28 @@ import { useState } from 'react';
 import { calcWidth, getFirstLine, getSecondLine } from 'utils';
 import { CarTitle } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
-import { useDispatch } from 'react-redux';
 import { setFavorite } from 'redux/cars/carsSlice';
 import { ModalWrapper } from 'components/ModalWrapper/ModalWrapper';
 import { useTheme } from 'styled-components';
 import { Car } from 'types/types.typed';
+import { useAppDispatch } from 'hooks';
 
-interface IProps{
-  cars:Car[]
+interface IProps {
+  cars: Car[];
 }
 
-
-export const CarsList = ({ cars }:IProps) => {
+export const CarsList = ({ cars }: IProps) => {
   const theme = useTheme();
   const [showModal, setShowModal] = useState(false);
-  const [car, setCar] = useState<Car>();
+  const [car, setCar] = useState<Car>(cars[0]);
 
-  const toggleModal = (car:Car) => {
+  const toggleModal = (car: Car) => {
     setShowModal(prevState => !prevState);
     setCar(car);
   };
 
-  const dispatch = useDispatch();
-  const handleClick = (id:number) => {
+  const dispatch = useAppDispatch();
+  const handleClick = (id: number) => {
     dispatch(setFavorite(id));
   };
 
@@ -69,7 +68,7 @@ export const CarsList = ({ cars }:IProps) => {
           </LearnMoreBtn>
         </Item>
       ))}
-      {showModal && <ModalWrapper car={car} toggleModal={toggleModal} />}
+      {showModal && <ModalWrapper car={car} toggleModal={() => toggleModal} />}
     </List>
   );
 };

@@ -1,7 +1,14 @@
 // import { useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 
-export const MyNumberInput = props => {
+// interface IProps {
+//   props: {
+//     suffix?: string;
+//     prefix?: string;
+//   };
+// }
+
+export const MyNumberInput = (props: any) => {
   // const [value, setValue] = useState('');                            // only manually for controlled form
 
   return (

@@ -10,15 +10,18 @@ import { LoadMoreBtn } from './CommonPage.styled';
 import { Helmet } from 'react-helmet-async';
 import { Car, IQuery } from 'types/types.typed';
 
-interface IProps{
-  allCars: Car[],
-  title:string
-  
+interface IProps {
+  allCars: Car[];
+  title: string;
 }
 
-
-const CommonPage = ({ allCars, title }:IProps) => {
-  const [query, setQuery] = useState<IQuery>({});
+const CommonPage = ({ allCars, title }: IProps) => {
+  const [query, setQuery] = useState<IQuery>({
+    make: '',
+    rentalPrice: '',
+    mileageFrom: 0,
+    mileageTo: 0,
+  });
   const [page, setPage] = useState<number>(1);
   const [cars, setCars] = useState<Car[]>([]);
 
@@ -64,7 +67,7 @@ const CommonPage = ({ allCars, title }:IProps) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <FormSearch setQuery={setQuery} />
+      <FormSearch setQuery={() => setQuery(query)} />
       <CarsList cars={cars} />
       {!ref.current && (
         <LoadMoreBtn type="button" onClick={handleClickLoadMore}>

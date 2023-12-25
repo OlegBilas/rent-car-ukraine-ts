@@ -1,6 +1,10 @@
 import { LineList } from './Line.styled';
 
-export const Line = ({ carInfo }) => {
+interface IProps {
+  carInfo: (string | number)[];
+}
+
+export const Line = ({ carInfo }: IProps) => {
   return (
     <LineList>
       {carInfo.map((item, index) => (

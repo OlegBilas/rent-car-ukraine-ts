@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay } from './Modal.styled';
+import { ToggleModal } from 'types/types.typed';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#modal-root') as HTMLDivElement;
 
-export const Modal = ({ children, toggleModal }) => {
+interface IProps {
+  toggleModal: ToggleModal;
+  children: React.ReactNode;
+}
+
+export const Modal = ({ children, toggleModal }: IProps) => {
   useEffect(() => {
-    const handleKeyDown = e => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         toggleModal();
       }
@@ -20,14 +26,14 @@ export const Modal = ({ children, toggleModal }) => {
     };
   }, [toggleModal]);
 
-  const handleOverlayClick = e => {
+  const handleOverlayClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       toggleModal();
     }
   };
 
   return createPortal(
-    <Overlay onClick={handleOverlayClick}>{children}</Overlay>,
+    <Overlay onClick={() => handleOverlayClick}>{children}</Overlay>,
     modalRoot
   );
 };

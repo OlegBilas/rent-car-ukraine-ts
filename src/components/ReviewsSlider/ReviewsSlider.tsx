@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { Autoplay } from 'swiper/modules';
@@ -17,14 +16,12 @@ import {
   Image,
 } from './ReviewsSlider.styled';
 
-import { useSelector } from 'react-redux';
 import { selectCars } from 'redux/cars/selectors';
 import { Car } from 'types/types.typed';
-
-
+import { useAppSelector } from 'hooks';
 
 const ReviewsSlider = () => {
-  const cars:Car[] = useSelector(selectCars);
+  const cars: Car[] = useAppSelector(selectCars);
 
   SwiperCore.use([Autoplay]);
 

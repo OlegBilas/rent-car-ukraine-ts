@@ -24,3 +24,5 @@ export interface Car {
   mileage: number;
   favorite: boolean;
 }
+
+export type ToggleModal = () => void;

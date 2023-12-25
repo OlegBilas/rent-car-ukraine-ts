@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 import { useState, useEffect } from 'react';
 
 // hook to get window size dynamically
@@ -9,7 +10,8 @@ const useWindowSize = () => {
     height: 0,
   });
 
-  useEffect(() => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  useEffect((): any => {
     // only execute all the code below in client side
     if (typeof window !== 'undefined') {
       // Handler to call on window resize
