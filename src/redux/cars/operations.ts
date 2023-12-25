@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 

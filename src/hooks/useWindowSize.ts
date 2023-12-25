@@ -10,7 +10,6 @@ const useWindowSize = () => {
     height: 0,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useEffect((): any => {
     // only execute all the code below in client side
     if (typeof window !== 'undefined') {
