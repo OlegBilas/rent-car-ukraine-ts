@@ -67,7 +67,7 @@ const CommonPage = ({ allCars, title }: IProps) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <FormSearch setQuery={() => setQuery(query)} />
+      <FormSearch setQuery={setQuery} />
       <CarsList cars={cars} />
       {!ref.current && (
         <LoadMoreBtn type="button" onClick={handleClickLoadMore}>

@@ -35,7 +35,7 @@ const initialValues: IQuery = {
 };
 
 interface IProps {
-  setQuery: (val: IQuery) => void;
+  setQuery: React.Dispatch<React.SetStateAction<IQuery>>;
 }
 
 export const FormSearch = ({ setQuery }: IProps) => {
