@@ -27,8 +27,7 @@ export const Modal = ({ car, toggleModal }: IProps) => {
     };
   }, [toggleModal]);
 
-  const handleOverlayClick = () => (e: MouseEvent) => {
-    console.log(e);
+  const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       toggleModal(car);
     }
