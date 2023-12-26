@@ -16,7 +16,7 @@ import {
   Image,
 } from './ReviewsSlider.styled';
 
-import { selectCars } from 'redux/cars/selectors';
+import { selectCars } from 'rdx/cars/selectors';
 import { Car } from 'types/types';
 import { useAppSelector } from 'hooks';
 

@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { calcWidth, getFirstLine, getSecondLine } from 'utils';
 import { CarTitle } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
-import { setFavorite } from 'redux/cars/carsSlice';
+import { setFavorite } from 'rdx/cars/carsSlice';
 import { ModalWrapper } from 'components/ModalWrapper/ModalWrapper';
 import { useTheme } from 'styled-components';
 import { Car } from 'types/types';

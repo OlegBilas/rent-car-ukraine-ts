@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchCars, fetchMakes } from 'redux/cars/operations';
+import { fetchCars, fetchMakes } from 'rdx/cars/operations';
 import { Car } from 'types/types';
 
 interface IState {

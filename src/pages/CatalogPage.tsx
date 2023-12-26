@@ -1,4 +1,4 @@
-import { selectCars } from 'redux/cars/selectors';
+import { selectCars } from 'rdx/cars/selectors';
 import CommonPage from 'pages/CommonPage/CommonPage';
 import { useAppSelector } from 'hooks';
 

@@ -4,10 +4,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { selectIsLoading } from 'redux/cars/selectors';
+import { selectIsLoading } from 'rdx/cars/selectors';
 
 import { Layout } from 'components/Layout/Layout';
-import { fetchCars, fetchMakes } from 'redux/cars/operations';
+import { fetchCars, fetchMakes } from 'rdx/cars/operations';
 import { ThemeProvider } from 'styled-components';
 import useWindowSize, { useAppSelector } from 'hooks';
 import { GlobalStyle } from 'components/GlobalStyle';

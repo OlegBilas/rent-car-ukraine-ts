@@ -20,7 +20,7 @@ import {
 import { ReactComponent as OpenedSvg } from 'images/Form/opened.svg';
 import { ReactComponent as ClosedSvg } from 'images/Form/closed.svg';
 
-import { selectCars, selectMakes } from 'redux/cars/selectors';
+import { selectCars, selectMakes } from 'rdx/cars/selectors';
 import { getPriceRanges } from 'utils';
 import * as Yup from 'yup';
 import { IQuery } from 'types/types';
