@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrent_car_ukraine_ts=self.webpackChunkrent_car_ukraine_ts||[]).push([[779],{6779:function(r,e,t){t.r(e);var a=t(969),n=t(9148),u=t(892),s=t(3329);e.default=function(){var r=(0,u.CG)(a.Wz);return(0,s.jsx)(n.Z,{allCars:r,title:"Our adverts"})}}}]);
-//# sourceMappingURL=779.5ce58d93.chunk.js.map
