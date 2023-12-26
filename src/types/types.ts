@@ -25,4 +25,4 @@ export interface Car {
   favorite: boolean;
 }
 
-export type ToggleModal = () => void;
+export type ToggleModal = (car: Car) => void;

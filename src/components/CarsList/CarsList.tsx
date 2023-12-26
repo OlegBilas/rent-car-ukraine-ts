@@ -11,10 +11,10 @@ import { calcWidth, getFirstLine, getSecondLine } from 'utils';
 import { CarTitle } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
 import { setFavorite } from 'rdx/cars/carsSlice';
-import { ModalWrapper } from 'components/ModalWrapper/ModalWrapper';
 import { useTheme } from 'styled-components';
 import { Car } from 'types/types';
 import { useAppDispatch } from 'hooks';
+import { Modal } from 'components/Modal/Modal';
 
 interface IProps {
   cars: Car[];
@@ -68,7 +68,7 @@ export const CarsList = ({ cars }: IProps) => {
           </LearnMoreBtn>
         </Item>
       ))}
-      {showModal && <ModalWrapper car={car} toggleModal={() => toggleModal} />}
+      {showModal && <Modal car={car} toggleModal={toggleModal} />}
     </List>
   );
 };

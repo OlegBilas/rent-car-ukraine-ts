@@ -55,7 +55,7 @@ export const CarModal = ({ car, toggleModal }: IProps) => {
 
   return (
     <Container>
-      <CloseBtn type="button" onClick={() => toggleModal()}>
+      <CloseBtn type="button" onClick={() => toggleModal(car)}>
         <Close width={24} height={24} />
       </CloseBtn>
       <Img

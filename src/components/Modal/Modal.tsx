@@ -1,20 +1,21 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay } from './Modal.styled';
-import { ToggleModal } from 'types/types';
+import { Car, ToggleModal } from 'types/types';
+import { CarModal } from 'components/CarModal/CarModal';
 
 const modalRoot = document.querySelector('#modal-root') as HTMLDivElement;
 
 interface IProps {
   toggleModal: ToggleModal;
-  children: React.ReactNode;
+  car: Car;
 }
 
-export const Modal = ({ children, toggleModal }: IProps) => {
+export const Modal = ({ car, toggleModal }: IProps) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
-        toggleModal();
+        toggleModal(car);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -26,14 +27,17 @@ export const Modal = ({ children, toggleModal }: IProps) => {
     };
   }, [toggleModal]);
 
-  const handleOverlayClick = (e: MouseEvent) => {
+  const handleOverlayClick = () => (e: MouseEvent) => {
+    console.log(e);
     if (e.target === e.currentTarget) {
-      toggleModal();
+      toggleModal(car);
     }
   };
 
   return createPortal(
-    <Overlay onClick={() => handleOverlayClick}>{children}</Overlay>,
+    <Overlay onClick={handleOverlayClick}>
+      <CarModal car={car} toggleModal={toggleModal} />
+    </Overlay>,
     modalRoot
   );
 };
