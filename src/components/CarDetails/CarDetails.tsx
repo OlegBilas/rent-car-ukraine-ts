@@ -12,7 +12,7 @@ import {
   PhoneUs,
   SecondLineModal,
   Title,
-} from './CarModal.styled';
+} from './CarDetails.styled';
 import { getFirstLineModal, getSecondLineModal } from 'utils';
 import { NumericFormat } from 'react-number-format';
 import { Car, ToggleModal } from 'types/types';
@@ -22,7 +22,7 @@ interface IProps {
   toggleModal: ToggleModal;
 }
 
-export const CarModal = ({ car, toggleModal }: IProps) => {
+export const CarDetails = ({ car, toggleModal }: IProps) => {
   const getOtherRequirements = ({
     rentalConditions,
     mileage,

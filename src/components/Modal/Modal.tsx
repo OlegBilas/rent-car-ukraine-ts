@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay } from './Modal.styled';
 import { Car, ToggleModal } from 'types/types';
-import { CarModal } from 'components/CarModal/CarModal';
+import { CarDetails } from 'components/CarDetails/CarDetails';
 
 const modalRoot = document.querySelector('#modal-root') as HTMLDivElement;
 
@@ -36,7 +36,7 @@ export const Modal = ({ car, toggleModal }: IProps) => {
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>
-      <CarModal car={car} toggleModal={toggleModal} />
+      <CarDetails car={car} toggleModal={toggleModal} />
     </Overlay>,
     modalRoot
   );
