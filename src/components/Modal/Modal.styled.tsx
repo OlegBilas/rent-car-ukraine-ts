@@ -9,6 +9,13 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(18, 20, 23, 0.5);
+  background-color: rgba(35, 38, 42, 0.5);
   z-index: 100;
+  /* opacity: 0;
+  transition: opacity 2500ms ease-in-out;
+
+  &.opened {
+    opacity: 0.5;
+    transition: opacity 2500ms ease-in-out;
+  } */
 `;

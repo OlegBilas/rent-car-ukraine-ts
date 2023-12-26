@@ -20,10 +20,13 @@ export const Modal = ({ car, toggleModal }: IProps) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     document.body.classList.add('lock-scroll');
+    const modal = document.getElementById('modal') as HTMLDivElement;
+    modal.classList.add('opened');
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.classList.remove('lock-scroll');
+      modal.classList.remove('opened');
     };
   }, [toggleModal]);
 
@@ -34,7 +37,7 @@ export const Modal = ({ car, toggleModal }: IProps) => {
   };
 
   return createPortal(
-    <Overlay onClick={handleOverlayClick}>
+    <Overlay id="modal" onClick={handleOverlayClick}>
       <CarDetails car={car} toggleModal={toggleModal} />
     </Overlay>,
     modalRoot

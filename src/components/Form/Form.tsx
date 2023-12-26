@@ -83,16 +83,16 @@ export const FormSearch = ({ setQuery }: IProps) => {
     <Formik
       initialValues={initialValues}
       validationSchema={Yup.object().shape({
-        make: Yup.string().oneOf(makes, 'Invalid make of car').defined(),
+        make: Yup.string().oneOf(makes, 'Invalid make of car'),
         rentalPrice: Yup.number()
-          .oneOf(prices, 'Invalid rental price of car')
-          .defined(),
+          .transform(value => (isNaN(value) ? undefined : value))
+          .oneOf(prices, 'Invalid rental price of car'),
         mileageFrom: Yup.number()
-          .lessThan(Yup.ref('mileageTo'), 'From should be < To')
-          .defined(),
+          // .transform(value => (isNaN(value) ? 0 : value))
+          .lessThan(Yup.ref('mileageTo'), 'From should be < To'),
         mileageTo: Yup.number()
-          .moreThan(Yup.ref('mileageFrom'), 'To should be > From')
-          .defined(),
+          .transform(value => (isNaN(value) ? Number.MAX_SAFE_INTEGER : value))
+          .moreThan(Yup.ref('mileageFrom'), 'To should be > From'),
       })}
       onSubmit={values => {
         setQuery(values);
@@ -197,7 +197,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
                 className="accent-button"
                 type="reset"
                 onClick={() => {
-                  setQuery(values);
+                  setQuery(initialValues);
                   setOpenedMake(false);
                   setOpenedPrice(false);
                 }}
