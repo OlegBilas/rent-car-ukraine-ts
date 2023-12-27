@@ -31,7 +31,7 @@ export const getCars = (
       car =>
         Number.parseInt(
           car.rentalPrice.replaceAll('$', '').replaceAll(',', '')
-        ) <= Number.parseInt(rentalPrice)
+        ) <= rentalPrice
     );
   }
 

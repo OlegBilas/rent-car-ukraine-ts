@@ -1,6 +1,6 @@
 export interface IQuery {
   make?: string;
-  rentalPrice?: string;
+  rentalPrice?: number;
   mileageFrom?: number;
   mileageTo?: number;
 }

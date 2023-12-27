@@ -18,7 +18,7 @@ interface IProps {
 const CommonPage = ({ allCars, title }: IProps) => {
   const [query, setQuery] = useState<IQuery>({
     make: '',
-    rentalPrice: '',
+    rentalPrice: 0,
     mileageFrom: 0,
     mileageTo: 0,
   });

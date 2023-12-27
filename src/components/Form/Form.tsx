@@ -27,11 +27,18 @@ import { IQuery } from 'types/types';
 import { useAppSelector } from 'hooks';
 import { NumberFormatValues } from 'react-number-format';
 
-const initialValues: IQuery = {
+type FormInputs = {
+  make: string;
+  rentalPrice: string;
+  mileageFrom: string;
+  mileageTo: string;
+};
+
+const initialValues: FormInputs = {
   make: '',
   rentalPrice: '',
-  mileageFrom: 0,
-  mileageTo: 0,
+  mileageFrom: '',
+  mileageTo: '',
 };
 
 interface IProps {
@@ -44,6 +51,21 @@ export const FormSearch = ({ setQuery }: IProps) => {
   const [prices, setPrices] = useState<number[]>([]);
   const [openedMake, setOpenedMake] = useState(false);
   const [openedPrice, setOpenedPrice] = useState(false);
+
+  const filterSchema = Yup.object().shape({
+    make: Yup.string().oneOf(makes, 'Invalid make of car'),
+    rentalPrice: Yup.number()
+      .transform(value => (isNaN(value) ? undefined : value))
+      .oneOf(prices, 'Invalid rental price of car'),
+    mileageFrom: Yup.number()
+      .transform(value => (isNaN(value) ? 0 : value))
+      .default(0),
+    //.lessThan(Yup.ref('mileageTo'), 'From should be < To'),
+    mileageTo: Yup.number()
+      .transform(value => (isNaN(value) ? Number.MAX_SAFE_INTEGER : value))
+      //.default(Number.MAX_SAFE_INTEGER)
+      .moreThan(Yup.ref('mileageFrom'), 'To should be > From'),
+  });
 
   useEffect(() => {
     setPrices(getPriceRanges(cars)); // array of numbers
@@ -82,20 +104,9 @@ export const FormSearch = ({ setQuery }: IProps) => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={Yup.object().shape({
-        make: Yup.string().oneOf(makes, 'Invalid make of car'),
-        rentalPrice: Yup.number()
-          .transform(value => (isNaN(value) ? undefined : value))
-          .oneOf(prices, 'Invalid rental price of car'),
-        mileageFrom: Yup.number()
-          // .transform(value => (isNaN(value) ? 0 : value))
-          .lessThan(Yup.ref('mileageTo'), 'From should be < To'),
-        mileageTo: Yup.number()
-          .transform(value => (isNaN(value) ? Number.MAX_SAFE_INTEGER : value))
-          .moreThan(Yup.ref('mileageFrom'), 'To should be > From'),
-      })}
+      validationSchema={filterSchema}
       onSubmit={values => {
-        setQuery(values);
+        setQuery(filterSchema.cast(values)); // transform
         setOpenedMake(false);
         setOpenedPrice(false);
       }}
@@ -197,7 +208,7 @@ export const FormSearch = ({ setQuery }: IProps) => {
                 className="accent-button"
                 type="reset"
                 onClick={() => {
-                  setQuery(initialValues);
+                  setQuery(filterSchema.cast(initialValues));
                   setOpenedMake(false);
                   setOpenedPrice(false);
                 }}
