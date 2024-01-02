@@ -20,5 +20,8 @@ export const substitudeImages = (cars: Car[], imageSize: ImageSizes): Car[] => {
       return { ...car, img: newImage };
     });
   }
+  if (imageSize === ImageSizes.BIG) {
+    newCars = cars;
+  }
   return newCars;
 };
