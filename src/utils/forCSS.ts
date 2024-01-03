@@ -90,6 +90,5 @@ export const calcWidthForImage = (
   } else if (currentWindowWidth < 425) {
     ratio = 4;
   }
-
-  return Math.round((currentWindowWidth / baseWindowWidth) * width) * ratio;
+  return Math.round((currentWindowWidth / baseWindowWidth) * width * ratio);
 };
