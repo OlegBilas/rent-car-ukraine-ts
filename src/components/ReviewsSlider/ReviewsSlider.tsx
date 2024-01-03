@@ -19,12 +19,13 @@ import {
 import { selectCars } from 'rdx/cars/selectors';
 import { Car } from 'types/types';
 import { useAppSelector } from 'hooks';
-import { ImageSizes, substitudeImages } from 'utils';
+import { substitudeImages } from 'utils';
+import { useTheme } from 'styled-components';
 
 const ReviewsSlider = () => {
   let cars: Car[] = useAppSelector(selectCars);
-
-  cars = substitudeImages(cars, ImageSizes.SMALL);
+  const theme = useTheme();
+  cars = substitudeImages(cars, 274, theme.width);
 
   SwiperCore.use([Autoplay]);
 

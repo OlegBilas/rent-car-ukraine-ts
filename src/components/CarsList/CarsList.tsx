@@ -7,7 +7,12 @@ import {
   LikeBtn,
 } from './CarsList.styled';
 import { useState } from 'react';
-import { calcWidth, getFirstLine, getSecondLine } from 'utils';
+import {
+  calcWidth,
+  getFirstLine,
+  getSecondLine,
+  substitudeImages,
+} from 'utils';
 import { CarTitle } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
 import { setFavorite } from 'rdx/cars/carsSlice';
@@ -22,6 +27,7 @@ interface IProps {
 
 export const CarsList = ({ cars }: IProps) => {
   const theme = useTheme();
+  cars = substitudeImages(cars, 274, theme.width);
   const [showModal, setShowModal] = useState(false);
   const [car, setCar] = useState<Car>(cars[0]);
 

@@ -1,6 +1,5 @@
 import { IQuery } from 'types/types';
 import { Car } from 'types/types';
-import { ImageSizes, substitudeImages } from './substitudeImages';
 
 type Result = {
   overallLength: number;
@@ -46,11 +45,7 @@ export const getCars = (
 
   const index = page * PER_PAGE;
 
-  const resultByPage = substitudeImages(
-    result.slice(0, index),
-    ImageSizes.MEDIUM
-  );
-
+  const resultByPage = result.slice(0, index);
   return {
     overallLength: result.length,
     carsFiltered: resultByPage,

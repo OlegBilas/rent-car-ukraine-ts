@@ -74,3 +74,11 @@ export const calcFontSize = (
 
   return `${Math.round(size)}${unit}`;
 };
+
+export const calcWidthForImage = (
+  width: number,
+  currentWindowWidth: number,
+  baseWindowWidth = 1440
+) => {
+  return Math.round((currentWindowWidth / baseWindowWidth) * width);
+};

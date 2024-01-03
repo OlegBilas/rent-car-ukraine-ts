@@ -59,7 +59,10 @@ export const CarDetails = ({ car, toggleModal }: IProps) => {
         <Close width={24} height={24} />
       </CloseBtn>
       <Img
-        src={car.img.replace(new RegExp('upload/(.*?)/'), 'upload/')}
+        src={car.img.replace(
+          new RegExp('upload/(.*?)/'),
+          `upload/c_fill,g_auto,w_${461}/`
+        )}
         alt={`${car.make} ${car.model}, ${car.year}`}
         width="461"
       />
