@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { CarTitle as CarTitleStyled } from 'components/CarTitle/CarTitle';
 import { Line } from 'components/Line/Line';
 import { ReactComponent as CloseStyled } from 'images/CarModal/x.svg';
-import { calcWidth } from 'utils';
+import { calcHeight, calcWidth } from 'utils';
 import { SCREENS } from 'components/GlobalStyle';
 
 export const Container = styled.div`
@@ -26,6 +26,7 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   width: 100%;
+  height: ${({ theme }) => calcHeight('520px', theme.height)};
   margin-bottom: 14px;
   border-radius: 14px;
 
