@@ -26,7 +26,7 @@ export const Container = styled.div`
 
 export const Img = styled.img`
   width: 100%;
-  height: ${({ theme }) => calcHeight('520px', theme.height)};
+  // height: ${({ theme }) => calcHeight('520px', theme.height)};
   margin-bottom: 14px;
   border-radius: 14px;
 

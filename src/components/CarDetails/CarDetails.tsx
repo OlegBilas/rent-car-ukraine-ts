@@ -13,9 +13,15 @@ import {
   SecondLineModal,
   Title,
 } from './CarDetails.styled';
-import { getFirstLineModal, getSecondLineModal } from 'utils';
+import {
+  calcHeightForImage,
+  calcWidthForImage,
+  getFirstLineModal,
+  getSecondLineModal,
+} from 'utils';
 import { NumericFormat } from 'react-number-format';
 import { Car, ToggleModal } from 'types/types';
+import { useTheme } from 'styled-components';
 
 interface IProps {
   car: Car;
@@ -23,6 +29,8 @@ interface IProps {
 }
 
 export const CarDetails = ({ car, toggleModal }: IProps) => {
+  const theme = useTheme();
+
   const getOtherRequirements = ({
     rentalConditions,
     mileage,
@@ -61,10 +69,11 @@ export const CarDetails = ({ car, toggleModal }: IProps) => {
       <Img
         src={car.img.replace(
           new RegExp('upload/(.*?)/'),
-          `upload/c_fill,g_auto,w_${461}/`
+          `upload/c_fill,g_auto,w_${calcWidthForImage(461, theme.width)}/`
         )}
         alt={`${car.make} ${car.model}, ${car.year}`}
-        width="461"
+        width={calcWidthForImage(461, theme.width)}
+        height={calcHeightForImage(520, theme.height)}
       />
       <CarTitle car={car} />
       <FirstLineModal carInfo={getFirstLineModal(car)} />

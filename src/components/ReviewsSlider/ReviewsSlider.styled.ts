@@ -31,9 +31,9 @@ export const SliderCard = styled.div`
   border-radius: 8px;
   border: 1px solid #e7e5e5;
 
-  @media screen and (min-width: ${SCREENS.TABLET}) {
+  /* @media screen and (min-width: ${SCREENS.TABLET}) {
     height: 284px;
-  }
+  } */
 `;
 
 export const ReviewContainer = styled.div`

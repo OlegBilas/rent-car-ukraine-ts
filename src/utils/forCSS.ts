@@ -92,3 +92,21 @@ export const calcWidthForImage = (
   }
   return Math.round((currentWindowWidth / baseWindowWidth) * width * ratio);
 };
+
+export const calcHeightForImage = (
+  Height: number,
+  currentWindowHeight: number,
+  baseWindowHeight = 992
+) => {
+  // let ratio = 1;
+  // if (currentWindowHeight >= 1024 && currentWindowHeight < 1440) {
+  //   ratio = 1.6;
+  // } else if (currentWindowHeight >= 768 && currentWindowHeight < 1024) {
+  //   ratio = 2;
+  // } else if (currentWindowHeight >= 425 && currentWindowHeight < 768) {
+  //   ratio = 3;
+  // } else if (currentWindowHeight < 425) {
+  //   ratio = 4;
+  // }
+  return Math.round((currentWindowHeight / baseWindowHeight) * Height);
+};
