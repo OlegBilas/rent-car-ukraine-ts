@@ -1,12 +1,6 @@
 import { Car } from 'types/types';
 import { calcWidthForImage } from './forCSS';
 
-// export enum ImageSizes {
-//   SMALL,
-//   MEDIUM,
-//   BIG,
-// }
-
 export const substitudeImages = (
   cars: Car[],
   imageSize: number,
